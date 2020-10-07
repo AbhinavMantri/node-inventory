@@ -1,0 +1,6 @@
+<div *ngIf="successMessage" class="message-alert">
+    <div class="alert alert-success" role="alert">
+        {{successMessage}}
+        <div class="close-alert" (click)="messageClose()">X</div>
+    </div>
+</div>

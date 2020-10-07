@@ -1,0 +1,20 @@
+.message-alert {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    width: 360px;
+    padding: 4px 0 4px 24px;
+    transition: .3s all ease-in-out;
+
+    .alert {
+        position: relative;
+    }
+}
+
+.close-alert {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+}

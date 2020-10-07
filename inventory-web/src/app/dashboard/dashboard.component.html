@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Inventroy</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+        <div class="nav-link" (click)="logout()">Logout</div>
+        </div>
+    </div>
+</nav>
+<div class="dash-body">
+    <div class="card product-list" *ngIf="products">
+        <div class="card-header">
+            <div class="card-title">
+                <h4>Products</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="list-group">
+                <div *ngFor="let product of products" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">  
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" [checked]="(selected.includes(product.id) ? 'checked': '')" (change) ="onProductSelect(product.id)" name="check-{{product.id}}" id="check-{{product.id}}" />
+                    </div> 
+                    <a routerLink="/product/{{product.id}}">
+                        <h5 class="mb-1">{{ product.title }}</h5>
+                    </a>
+                  </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>

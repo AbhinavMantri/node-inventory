@@ -1,0 +1,31 @@
+<div class="login-page">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h3>Login</h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <div *ngIf="errorMessage">
+                <div class="alert alert-danger" role="alert">
+                    {{errorMessage}}
+                </div>
+            </div>
+            <form (ngSubmit)="onSubmit()" ngNativeValidate>
+                <div class="form-group">
+                  <label for="email">Email address</label>
+                  <input [(ngModel)]="user.email" type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="login-bottom">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <a class="nav-link" [routerLink]="['/register']">Don't have an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

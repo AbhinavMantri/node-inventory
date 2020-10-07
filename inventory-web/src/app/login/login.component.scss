@@ -1,0 +1,14 @@
+@import "../scss/mixins.scss";
+
+.login-page {
+    margin-top: 24px;
+
+    .card {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}
+
+.login-bottom {
+    @include display-flex-med;
+}

@@ -1,0 +1,10 @@
+<div>
+    <h3>
+        Product Detail
+    </h3>
+    <div class="product-detail" *ngIf="product">
+       <h4>{{product.title}}</h4>
+       <p>{{product.description}}</p>
+    </div>
+    <button class="btn btn-secondary" (click)="goBack()">go back</button>
+</div>

@@ -1,0 +1,55 @@
+GET http://localhost:3000/users/kamaltest@gmail.com
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAxOTE4Mjk4LCJleHAiOjE2MDE5MjE4OTh9.Hl2YC6UaaQM8cdTKjJ1wlARmBPB-F1n4EHdDq9q9xRo
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Kamal Jain",
+    "password": "password",
+    "email": "kamaltest@gmail.com"
+}
+
+###
+
+POST http://localhost:3000/users/auth
+Content-Type: application/json
+
+{
+    "email": "kamaltest@gmail.com",
+    "password": "password"
+}
+
+###
+
+POST http://localhost:3000/products
+Content-Type: application/json
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAxOTIxNTk4LCJleHAiOjE2MDE5MjUxOTh9.VIOkIOZjBk24a6WmPpDo_dhv5cxkmaXjIRVKPrOS9i8
+
+{
+    "title": "Levis Jeans",
+    "description": "One of the best jean in the market"
+}
+
+###
+
+GET http://localhost:3000/products
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAxOTIxNTk4LCJleHAiOjE2MDE5MjUxOTh9.VIOkIOZjBk24a6WmPpDo_dhv5cxkmaXjIRVKPrOS9i8
+
+
+###
+
+GET http://localhost:3000/products/1
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAxOTIxNTk4LCJleHAiOjE2MDE5MjUxOTh9.VIOkIOZjBk24a6WmPpDo_dhv5cxkmaXjIRVKPrOS9i8
+
+
+###
+
+DELETE http://localhost:3000/products
+access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjAxOTIxNTk4LCJleHAiOjE2MDE5MjUxOTh9.VIOkIOZjBk24a6WmPpDo_dhv5cxkmaXjIRVKPrOS9i8
+
+{
+    "ids": "[ 1 ]"
+}
