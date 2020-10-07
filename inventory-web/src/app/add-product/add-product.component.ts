@@ -17,6 +17,7 @@ export class AddProductComponent implements OnInit {
   errorMessage: string;
 
   @Output() displayForm = new EventEmitter();
+  @Output() hideError = new EventEmitter();
 
   constructor(private store: Store<AppState>) { 
     this.getState = this.store.select(productState);
@@ -31,5 +32,6 @@ export class AddProductComponent implements OnInit {
   onSubmit(): void {
     this.store.dispatch(new AddProduct({...this.product}));
     this.displayForm.emit();
+    this.hideError.emit();
   }
 }

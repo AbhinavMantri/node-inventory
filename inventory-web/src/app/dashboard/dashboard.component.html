@@ -24,7 +24,7 @@
         </div>
         <div class="card-body">
             <div class="add-product" *ngIf="showForm">
-                <app-add-product (displayForm)="displayForm(false)"></app-add-product>
+                <app-add-product (displayForm)="displayForm(false)" (hideError)="setErrorMessage(null)"></app-add-product>
             </div>
             <div class="list-group">
                 <div *ngFor="let product of products" class="list-group-item list-group-item-action">
