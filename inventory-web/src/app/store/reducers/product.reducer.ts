@@ -16,12 +16,14 @@ export const initialState: State = {
 }
 
 const getUpdatedDetail = (state, payload) => {
-    for(let i = 0; i < payload.length; i++) {
-        if(state[payload[i]])
-            delete state[payload[i]];
+    const obj = {};
+
+    for(let id in state) {
+        if(!payload.includes(id))
+            obj[id] = state[id];
     }
 
-    return state;
+    return obj;
 } 
 
 export function reducer(state = initialState, action: All): State {
@@ -44,12 +46,10 @@ export function reducer(state = initialState, action: All): State {
             return {
                 ...state,
                 list: state.list ? state.list.concat(data) : (data ? [data] : state.list),
-                errorMessage: null,
-            };
-        case ProductActionTypes.DELETE_PRODUCTS_SUCCESS:
-            return {
-                ...state,
-                list: state.list.concat(data),
+                detail: {
+                    ...state.detail,
+                    [id]: data,
+                },
                 errorMessage: null,
             };
         case ProductActionTypes.DELETE_PRODUCTS_SUCCESS: 
@@ -61,7 +61,12 @@ export function reducer(state = initialState, action: All): State {
             };
         case ProductActionTypes.GET_PRODUCTS_FAILURE:
         case ProductActionTypes.GET_PRODUCT_FAILURE:        
-        case ProductActionTypes.DELETE_PRODUCTS_FAILURE:                      
+        case ProductActionTypes.ADD_PRODUCT_FAILURE: 
+        case ProductActionTypes.DELETE_PRODUCTS_FAILURE: 
+            return {
+                ...state,
+                errorMessage: error,
+            };                     
         default:
             return state;    
     }

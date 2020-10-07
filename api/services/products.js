@@ -18,7 +18,7 @@ const productService = {
         return query(`
             insert into products(title, description, user_id)
             values("${product.title}", "${product.description}", "${product.userId}")
-        `);
+        `, false, true);
     },
     deleteProducts: async function(userId, ids) {
         // console.log(ids);

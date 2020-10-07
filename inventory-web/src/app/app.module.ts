@@ -18,6 +18,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { MessageComponent } from './message/message.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MessageComponent } from './message/message.component';
     DashboardComponent,
     ProductDetailComponent,
     UserDetailComponent,
-    MessageComponent
+    MessageComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +37,7 @@ import { MessageComponent } from './message/message.component';
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot(reducers, {}),
-    EffectsModule.forRoot([ AuthEffect, ProductEffect ]),
-
+    EffectsModule.forRoot([ AuthEffect, ProductEffect ])
   ],
   providers: [
     CookieService,

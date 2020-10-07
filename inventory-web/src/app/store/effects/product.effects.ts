@@ -55,8 +55,7 @@ export class ProductEffect {
         switchMap(payload => {
             return this.productService.addProduct(payload.title, payload.description).pipe(
                 map(product => {
-                    // console.log(user);
-                    return new AddProductSuccess(product);
+                    return new AddProductSuccess({ data: {...product, ...payload }, id: product.id });
                 }),
                 catchError(err => {
                     return of(new AddProductFailure({error: err.error.reason }));
@@ -73,7 +72,7 @@ export class ProductEffect {
             return this.productService.deleteProducts(payload.ids).pipe(
                 map(product => {
                     // console.log(user);
-                    return new DeleteProductsSuccess(product);
+                    return new DeleteProductsSuccess({ data: payload.ids });
                 }),
                 catchError(err => {
                     return of(new DeleteProductsFailure({error: err.error.reason }));

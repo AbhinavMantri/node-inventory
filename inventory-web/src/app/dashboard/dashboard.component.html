@@ -7,13 +7,25 @@
     </div>
 </nav>
 <div class="dash-body">
+    <div *ngIf="errorMessage">
+        <div class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
+    </div>
     <div class="card product-list" *ngIf="products">
         <div class="card-header">
             <div class="card-title">
                 <h4>Products</h4>
             </div>
+            <div class="product-actions">
+                <button class="btn btn-info" (click)="displayForm(true)">Add Product</button>
+                <button class="btn btn-danger" (click)="deleteProducts()">Delete</button>
+            </div>
         </div>
         <div class="card-body">
+            <div class="add-product" *ngIf="showForm">
+                <app-add-product (displayForm)="displayForm(false)"></app-add-product>
+            </div>
             <div class="list-group">
                 <div *ngFor="let product of products" class="list-group-item list-group-item-action">
                   <div class="d-flex w-100 justify-content-between">  

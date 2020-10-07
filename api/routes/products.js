@@ -41,7 +41,7 @@ router.post("/", function(req, res) {
     .then(id => {
         productService.addProduct({...req.body, userId: id})
         .then(data => {
-            res.status(201).send();
+            res.status(201).send({id: data});
         })
         .catch(err => {
            res.status(400).send(); 

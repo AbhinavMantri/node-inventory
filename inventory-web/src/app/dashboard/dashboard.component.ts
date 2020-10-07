@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState, productState } from '../store/app.states';
 import { Logout } from '../store/actions/auth.action';
-import { GetProducts } from '../store/actions/product.action';
+import { GetProducts, DeleteProducts } from '../store/actions/product.action';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 
@@ -15,6 +15,8 @@ export class DashboardComponent implements OnInit {
   products: Product[] | null;
   getState: Observable<any>;
   selected: number[] = [];
+  showForm: boolean = false;
+  errorMessage: string | null;
 
   constructor(private store: Store<AppState>) { 
     this.getState = this.store.select(productState);
@@ -46,5 +48,22 @@ export class DashboardComponent implements OnInit {
 
   logout(): void {
     this.store.dispatch(new Logout({}));
+  }
+
+  displayForm(show): void {
+    this.showForm = show;
+  }
+
+  deleteProducts(): void {
+    if(this.selected.length > 0) {
+      this.setErrorMessage(null);
+      this.store.dispatch(new DeleteProducts({ ids: this.selected }));
+    } else {
+      this.setErrorMessage("No Product is selected.");
+    }
+  }
+
+  setErrorMessage(error): void {
+    this.errorMessage = error;
   }
 }
